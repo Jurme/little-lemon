@@ -1,3 +1,52 @@
+:root {
+  --primary: #495e57;
+  --secondary: #f4ce14;
+  --text: #333;
+  --bg: #ffffff;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: sans-serif;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+p {
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+span {
+  color: var(--secondary);
+  font-weight: bold;
+}
+
+nav {
+  font-weight: 500;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+li:hover {
+  color: var(--secondary);
+}
 .App {
   text-align: center;
 }
@@ -35,4 +84,23 @@
   to {
     transform: rotate(360deg);
   }
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--primary);
+  color: white;
+}
+
+.nav-list {
+  display: flex;
+  gap: 20px;
+}
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #eee;
 }

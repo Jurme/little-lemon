@@ -1,27 +1,23 @@
 import './App.css';
-import logo from './logo.svg';
+import { Routes, Route } from 'react-router-dom';
+import Home from './Pages/home';
+import Booking from './Pages/booking';
+import Header from './Components/header';
+import Footer from './Components/footer';
+
+
 function App() {
   return (
     <>
-    <header>
-      <img src={logo} height={40}  width={40} alt="Little Lemon Logo" />
-      <nav>
-        <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Menu</li>
-          <li>Reservation</li>
-          <li>Order Online</li>
-          <li>Login</li>
-         </ul>
-      </nav>
-    </header>
+      <Header />
 
-    <footer>
-      <p> All right reserved</p>
-    </footer>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/booking" element={<Booking />} />
+      </Routes>
+
+      <Footer />
     </>
-
   );
 }
 
