@@ -1,5 +1,5 @@
 import '../App.css';
-function aboutus() {
+function Aboutus() {
   return (
     <>
     <div>
@@ -9,4 +9,4 @@ function aboutus() {
   );
 }
 
-export default aboutus;
+export default Aboutus;
