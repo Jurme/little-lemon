@@ -1,14 +1,12 @@
-import './App.css';
+import Header from "./Components/header";
+import Footer from "./Components/footer";
+import Home from "./Pages/home";
+import Booking from "./Pages/booking";
 import { Routes, Route } from 'react-router-dom';
-import Home from './Pages/home';
-import Booking from './Pages/booking';
-import Header from './Components/header';
-import Footer from './Components/footer';
-
-
 function App() {
   return (
     <>
+    
       <Header />
 
       <Routes>
