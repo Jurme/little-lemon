@@ -3,6 +3,7 @@ import Footer from "./Components/footer";
 import Home from "./Pages/home";
 import Booking from "./Pages/booking";
 import { Routes, Route } from 'react-router-dom';
+import ConfirmedBooking from "./Components/confirmbooking";
 function App() {
   return (
     <>
@@ -12,6 +13,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/booking" element={<Booking />} />
+        <Route path="/confirmed" element={<ConfirmedBooking />} />
+
       </Routes>
 
       <Footer />

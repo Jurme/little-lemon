@@ -1,48 +1,52 @@
-import '../App.css';
-import BookingForm from '../Components/bookingform';
-import { useReducer } from 'react';
+import React, { useReducer, useState } from "react";
+import BookingForm from "../Components/bookingform";
+import { fetchAPI } from "../api";
+import { useNavigate } from "react-router-dom";
+import { submitAPI } from "../api";
 
+// Initialize times for today
+const initializeTimes = () => {
+  return fetchAPI(new Date());
+};
 
-const seededTimes = [
-    "17:00",
-    "18:00",
-    "19:00",
-    "20:00",
-    "21:00",
-    "22:00"
-  ];
-const initializeTimes = () => seededTimes;
-
-  const updateTimes = (state, action) => {
-    switch (action.type) {
-      case 'updateTimes':
-        return seededTimes;
-      default:
-        return state;
-    }
-  };
+// Update times when date changes
+const updateTimes = (state, selectedDate) => {
+  return fetchAPI(new Date(selectedDate));
+};
 
 function Booking() {
-
-  const [availableTimes, dispatch] = useReducer(
-  updateTimes,
-  undefined,
-  initializeTimes
-);
-  return (
-    <main>
-      <h1>Book a Table</h1>
-      <p>Reserve your table for a memorable dining experience.</p>
-
-      <BookingForm 
-      availableTimes={availableTimes}
-      dispatch={dispatch}
-      />
-
-      <p>We look forward to serving you.</p>
-    </main>
+  const [date, setDate] = useState(
+    new Date().toISOString().split("T")[0]
   );
 
+  const navigate = useNavigate();
+
+const submitForm = (formData) => {
+  const result = submitAPI(formData);
+
+  if (result) {
+    navigate("/confirmed");
+  }
+};
+  const [availableTimes, dispatch] = useReducer(
+    updateTimes,
+    [],
+    initializeTimes
+  );
+
+  return (
+    <div>
+      <h1>Booking Page</h1>
+
+      <BookingForm
+        availableTimes={availableTimes}
+        date={date}
+        setDate={setDate}
+        dispatch={dispatch}
+        submitForm={submitForm}
+      />
+    </div>
+  );
 }
 
 export default Booking;
