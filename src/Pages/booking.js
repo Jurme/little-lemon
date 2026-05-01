@@ -1,16 +1,16 @@
 import React, { useReducer, useState } from "react";
 import BookingForm from "../Components/bookingform";
-import { fetchAPI } from "../api";
+import { fetchAPI, submitAPI } from "../api";
 import { useNavigate } from "react-router-dom";
-import { submitAPI } from "../api";
+import "../App.css";
 
-// Initialize times for today
-const initializeTimes = () => {
+// ✅ MUST export for tests
+export const initializeTimes = () => {
   return fetchAPI(new Date());
 };
 
-// Update times when date changes
-const updateTimes = (state, selectedDate) => {
+// ✅ MUST export for tests
+export const updateTimes = (state, selectedDate) => {
   return fetchAPI(new Date(selectedDate));
 };
 
@@ -21,13 +21,14 @@ function Booking() {
 
   const navigate = useNavigate();
 
-const submitForm = (formData) => {
-  const result = submitAPI(formData);
+  const submitForm = (formData) => {
+    const result = submitAPI(formData);
 
-  if (result) {
-    navigate("/confirmed");
-  }
-};
+    if (result) {
+      navigate("/confirmed");
+    }
+  };
+
   const [availableTimes, dispatch] = useReducer(
     updateTimes,
     [],
@@ -36,13 +37,20 @@ const submitForm = (formData) => {
 
   return (
     <div>
-      <h1>Booking Page</h1>
+      <h1
+      style={{
 
+        textAlign:"center",
+        margin: "32px 0"
+      }}
+      >
+      Booking Page
+      </h1>
       <BookingForm
         availableTimes={availableTimes}
         date={date}
         setDate={setDate}
-        dispatch={dispatch}
+        updateTimes={dispatch}
         submitForm={submitForm}
       />
     </div>

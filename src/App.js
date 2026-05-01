@@ -4,6 +4,7 @@ import Home from "./Pages/home";
 import Booking from "./Pages/booking";
 import { Routes, Route } from 'react-router-dom';
 import ConfirmedBooking from "./Components/confirmbooking";
+import UnderConstruction from "./Components/underconstruction";
 function App() {
   return (
     <>
@@ -14,7 +15,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/booking" element={<Booking />} />
         <Route path="/confirmed" element={<ConfirmedBooking />} />
-
+         <Route path="/under-construction" element={<UnderConstruction />}
+      />
       </Routes>
 
       <Footer />
